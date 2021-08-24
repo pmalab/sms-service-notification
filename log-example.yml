@@ -1,0 +1,12 @@
+log:
+
+  default: "elastic_search"
+  drivers:
+    elastic_search:
+      ubtServer: "https://metrics-dev.spacecycle.cn"
+      appName: "hushan-dev"
+      appVersion: "0.1.0"
+      ci: false
+      debugMode: true
+
+

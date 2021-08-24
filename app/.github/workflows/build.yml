@@ -1,0 +1,38 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - feature/github-action
+    tags:
+      - v*
+jobs:
+
+  build-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          registry: harbor-test.spacecycle.cn
+          name: harbor-test.spacecycle.cn/hushan/notification-center
+          username: ${{ secrets.HARBOR_TEST_USER }}
+          password: ${{ secrets.HARBOR_TEST_PWD }}
+          workdir: ./
+          tag_names: true
+          
+  build-github:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          registry: docker.pkg.github.com
+          name: space-tech-dev/sms-service-notification
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          workdir: ./
+          tag_names: true
+          

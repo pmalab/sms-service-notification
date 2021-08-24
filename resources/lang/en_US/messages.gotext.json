@@ -1,0 +1,15 @@
+{
+  "language": "en_US",
+  "messages": [
+    {
+      "id": "Hello world!",
+      "message": "Hello world!",
+      "translation": "Γιά σου Κόσμε!"
+    },
+    {
+      "id": "Hello world!",
+      "message": "Hello world!",
+      "translation": "Γιά σου Κόσμε!"
+    }
+  ]
+}

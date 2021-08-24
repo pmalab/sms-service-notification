@@ -61,6 +61,11 @@ func main() {
 	// Initialize the routes
 	routes.InitializeRoutes(Router)
 
+	//templateParamJson := "{\"cardnumber\":\"201314570325\",\"deductamount\":\"520\"}"
+	aliYunService := service.NewAliYunService()
+	aliYunService.SendMsg("15732029254", "SPAC", "SMS_217418916", "")
+	//aliYunService.SendMsg("15732029254", "SPACE", "SMS_211488651", templateParamJson)
+
 	// Start serving the application
 	// listen and serve on 0.0.0.0:8080 (for windows "localhost:8080®")
 	err := Router.Run(config.AppConfigure.Server.Host + ":" + config.AppConfigure.Server.Port)

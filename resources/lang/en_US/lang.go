@@ -10,6 +10,7 @@ import (
 var lang = language.English
 
 func LoadLang() {
+	message.SetString(lang, fmt2.Sprintf("%d", config.API_RETURN_CODE_ERROR), "return error")
 	message.SetString(lang, fmt2.Sprintf("%s", config.MESSAGE_HUSHAN_RESERVATION_SUCCESS_TITLE), "Booking Success")
 	message.SetString(lang, fmt2.Sprintf("%s", config.MESSAGE_HUSHAN_RESERVATION_SUCCESS), "%s %v %s %s")
 
@@ -33,5 +34,5 @@ func LoadLang() {
 
 	message.SetString(lang, fmt2.Sprintf("%s", config.MESSAGE_CYCLE_SEAT_NUMBER), "seat number %v")
 
-	message.SetString(lang, fmt2.Sprintf("%s", config.API_ERR_CODE_FAIL_TO_GET_THIRD_PARTY_SHOP_LIST), "无法获取第三方门店信息")
+	message.SetString(lang, fmt2.Sprintf("%d", config.API_ERR_CODE_FAIL_TO_GET_THIRD_PARTY_SHOP_LIST), "无法获取第三方门店信息")
 }

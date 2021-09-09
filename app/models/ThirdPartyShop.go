@@ -11,7 +11,7 @@ func (mdl *ThirdPartyShop) TableName() string {
 }
 
 type ThirdPartyShop struct {
-	Studio *Studio `gorm:"foreignKey:StudioUUID;references:ID" json:"studio"`
+	Studio *Studio `gorm:"foreignKey:StudioUUID;references:UUID" json:"studio"`
 
 	ID                 int     `gorm:"column:id" json:"id"`
 	//UUID               string  `gorm:"column:integration_id__c" json:"uuid" primaryKey;autoIncrement:"false" sql:"index"`

@@ -1,12 +1,12 @@
 package controllers
 
 import (
+	UBT "github.com/ArtisanCloud/ubt-go"
+	"github.com/gin-gonic/gin"
 	"github.com/space-tech-dev/sms-service-notification/app/http/request"
 	. "github.com/space-tech-dev/sms-service-notification/app/services"
 	"github.com/space-tech-dev/sms-service-notification/config"
 	logger "github.com/space-tech-dev/sms-service-notification/loggerManager"
-	UBT "github.com/ArtisanCloud/ubt-go"
-	"github.com/gin-gonic/gin"
 	//"github.com/ArtisanCloud/go-libs/fmt"
 	//"net/http"
 	//	"strconv"
@@ -26,7 +26,7 @@ func init() {
 
 func NewNotificationAPIController(context *gin.Context) (ctl *NotificationAPIController) {
 	return &NotificationAPIController{
-		APIController:       NewAPIController(),
+		APIController:       NewAPIController(context),
 		ServiceNotification: NewNotificationService(),
 		ServiceReservation:  NewReservationService(),
 		ServiceCycleSeatLog:  NewCycleSeatLogService(),

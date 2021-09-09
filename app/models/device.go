@@ -1,8 +1,8 @@
 package models
 
 import (
-	"github.com/space-tech-dev/sms-service-notification/config"
 	"github.com/golang-module/carbon"
+	"github.com/space-tech-dev/sms-service-notification/config"
 )
 
 // TableName overrides the table name used by Account to `profiles`
@@ -28,8 +28,8 @@ type Device struct {
 
 const TABLE_NAME_DEVICE = "device__c"
 
-const PLATFORM_IOS = "iOS"
-const PLATFORM_ANDROID = "Android"
+//const PLATFORM_IOS = "iOS"
+//const PLATFORM_ANDROID = "Android"
 
 // 模块初始化函数 import 包时被调用
 func init() {

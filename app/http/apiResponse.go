@@ -1,8 +1,13 @@
 package http
 
 import (
-	. "github.com/space-tech-dev/sms-service-notification/config"
+	fmt2 "fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/space-tech-dev/sms-service-notification/app/models"
+	service "github.com/space-tech-dev/sms-service-notification/app/services"
+	. "github.com/space-tech-dev/sms-service-notification/config"
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
 	"net/http"
 )
 
@@ -16,12 +21,21 @@ type Meta struct {
 }
 
 type APIResponse struct {
+	Context *gin.Context `json:"-"`
+
 	Meta Meta        `json:"meta"`
 	Data interface{} `json:"data"`
 }
 
-func NewAPIResponse() (rs *APIResponse) {
+func NewAPIResponse(ctx *gin.Context) (rs *APIResponse) {
+	if ctx == nil {
+		ctx = &gin.Context{}
+	}
+
+	ctx.Header("version", APP_VERSION)
+
 	rs = &APIResponse{
+		Context: ctx,
 		Meta: Meta{
 			ReturnCode:    API_RETURN_CODE_INIT,
 			ReturnMessage: "",
@@ -115,6 +129,23 @@ func (rs *APIResponse) getJsonResponseBody() map[string]interface{} {
 	if rs.Meta.ReturnMessage != "" {
 		rsMsg = rs.Meta.ResultMessage
 	}
+
+	// set locale
+	local := service.GetSessionLocale(rs.Context)
+	var p *message.Printer
+	if local == models.LOCALE_EN {
+		p = message.NewPrinter(language.English)
+	} else {
+		p = message.NewPrinter(language.Chinese)
+	}
+	if rtMsg == "" {
+		rtMsg = p.Sprintf(fmt2.Sprintf("%d", rs.Meta.ReturnCode))
+	}
+	if rsMsg == "" {
+		rsMsg = p.Sprintf(fmt2.Sprintf("%d", rs.Meta.ResultCode))
+	}
+	//fmt2.Printf("local:%s %d %s, %d %s", local, rs.Meta.ReturnCode, rtMsg, rs.Meta.ResultCode, rsMsg)
+
 
 	return map[string]interface{}{
 		"meta": gin.H{

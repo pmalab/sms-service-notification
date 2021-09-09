@@ -62,8 +62,8 @@ func main() {
 	routes.InitializeRoutes(Router)
 
 	//templateParamJson := "{\"cardnumber\":\"201314570325\",\"deductamount\":\"520\"}"
-	aliYunService := service.NewAliYunService()
-	aliYunService.SendMsg("15732029254", "SPAC", "SMS_217418916", "")
+	//aliYunService := service.NewAliYunService()
+	//aliYunService.SendMsg("15732029254", "SPAC", "SMS_217418916", "")
 	//aliYunService.SendMsg("15732029254", "SPACE", "SMS_211488651", templateParamJson)
 
 	// Start serving the application

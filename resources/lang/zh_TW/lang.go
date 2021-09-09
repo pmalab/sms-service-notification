@@ -32,4 +32,6 @@ func LoadLang() {
 	message.SetString(lang, fmt2.Sprintf("%s", config.MESSAGE_HUSHAN_RESERVATION_UPDATE_CYCLE_SEAT), "您的預約(%s %v由%s老師教授的%s)已成功更換車位")
 
 	message.SetString(lang, fmt2.Sprintf("%s", config.MESSAGE_CYCLE_SEAT_NUMBER), "%v號車位")
+
+	message.SetString(lang, fmt2.Sprintf("%s", config.API_ERR_CODE_FAIL_TO_GET_THIRD_PARTY_SHOP_LIST), "无法获取第三方门店信息")
 }

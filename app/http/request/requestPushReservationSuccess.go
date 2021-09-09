@@ -1,11 +1,12 @@
 package request
 
 import (
+	"github.com/ArtisanCloud/go-libs/object"
+
 	//"fmt"
 	. "github.com/space-tech-dev/sms-service-notification/app/http"
 	. "github.com/space-tech-dev/sms-service-notification/config"
-	//"github.com/ArtisanCloud/go-libs/object"
-	"github.com/ArtisanCloud/go-libs/object"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,7 +19,7 @@ func ValidatePushReservationSuccess(context *gin.Context) {
 
 	//fmt.Println("validate notification push reserve success")
 	if err := context.ShouldBind(&form); err != nil {
-		//println(err.Error())
+		//println("========",err.Error())
 		if err := context.ShouldBindJSON(&form); err != nil {
 			//println("Error occurs", err.Error())
 			//js, _ := json.Marshal(gin.H{"error": err.Error()})
@@ -28,8 +29,8 @@ func ValidatePushReservationSuccess(context *gin.Context) {
 			apiResponse.SetCode(
 				API_ERR_CODE_REQUEST_PARAM_ERROR,
 				API_RETURN_CODE_ERROR,
-				"", "").SetData(object.HashMap{
-				"message": err.Error(),
+				"", "").SetData(
+					object.HashMap{"message": err.Error(),
 			}).ThrowJSONResponse(context)
 		}
 	}

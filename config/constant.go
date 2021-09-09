@@ -253,3 +253,5 @@ const MESSAGE_HUSHAN_RESERVATION_UPDATE_CYCLE_SEAT_TITLE = "hushan_reservation_u
 const MESSAGE_HUSHAN_RESERVATION_UPDATE_CYCLE_SEAT = "hushan_reservation_update_cycle_seat"
 
 const MESSAGE_CYCLE_SEAT_NUMBER = "cycle_seat_number"
+
+const API_ERR_CODE_FAIL_TO_GET_THIRD_PARTY_SHOP_LIST = 4130008
